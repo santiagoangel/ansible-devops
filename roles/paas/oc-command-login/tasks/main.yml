@@ -1,0 +1,15 @@
+# Logs into an OpenShift instance with oc command line tool via token.
+#
+# VARIABLES
+#   ochost - OpenShift host to log into
+#   ocport - OpenShift port to log into
+#   octoken - OpenShift token to log in as (service account)
+#   ocpath - Path to OpenShift oc command line tool
+
+- name: Set occommand with a concat of 'ocpath' and 'oc' executable to form a full location fact
+  set_fact:
+    occommand: "{{ ocpath }}/oc"
+
+- name: Log into OpenShift
+  command: >
+    {{ occommand }} login 'https://{{ ochost }}:{{ ocport }}' --token='{{ octoken }}' --insecure-skip-tls-verify=true

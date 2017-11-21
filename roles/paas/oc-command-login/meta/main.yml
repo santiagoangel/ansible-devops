@@ -1,0 +1,37 @@
+galaxy_info:
+  author: Santiago Angel
+  description: Ansible role for logging into an OpenShift instance with oc command line tool via token.
+  company: SC Technology
+  license: license (Apache)/ LGPL 3
+  min_ansible_version: 2.2.0
+  platforms:
+  - name: GenericLinux
+    versions:
+    - any
+  - name: EL
+    versions:
+    - 6
+    - 7
+  - name: Fedora
+    versions:
+    - 25
+    - 26 
+  - name: MacOSX
+    versions:
+    - 10.11
+    - 10.12
+  - name: macOS
+    versions:
+    - Sierra  
+   
+  galaxy_tags:
+    - openshift
+    - openshift
+    - tools
+    - redhat
+  categories:
+    - openshift
+    - openshift
+    - tools
+    - redhat
+dependencies: []
