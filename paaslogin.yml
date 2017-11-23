@@ -1,0 +1,5 @@
+  ---
+# file: paaslogin.yml
+- hosts: ocbastion
+  roles:
+  - oc-command-login
