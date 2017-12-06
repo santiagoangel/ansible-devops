@@ -1,0 +1,13 @@
+- name: openshift
+  hosts: all
+  tasks:
+    - name: openshift deploy
+      command: echo "SUCCESS"
+      register: output
+    - name: check test
+      command: echo "Openshift deploy OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - name: check output
+      fail:
+        msg: "Openshift deploy failed"
+      when: output.stdout.find('SUCCESS') == -1 
