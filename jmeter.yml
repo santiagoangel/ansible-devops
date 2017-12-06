@@ -1,0 +1,13 @@
+- name: jmeter
+  hosts: all
+  tasks:
+    - name: jmeter test
+      command: echo "SUCCESS"
+      register: output
+    - name: check test
+      command: echo "Jmeter tests OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - name: check output
+      fail:
+        msg: "Jmeter tests failed"
+      when: output.stdout.find('SUCCESS') == -1 
