@@ -1,17 +1,11 @@
---- 
-- 
+- name: sonarqube
   hosts: all
-  name: sonarqube
-  tasks: 
-    - 
-      command: "echo \"SUCCESS\""
-      name: "sonarqube test"
+  tasks:
+    - name: sonarqube test
+      command: echo "SUCCESS"
       register: output
-    - 
-      command: "echo \"SonarQube tests OK\""
-      name: "sonarqube test"
-      when: "output.stdout.find('SUCCESS') != -1"
-    - 
-      fail: ~
+    - command: echo "SonarQube tests OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - fail:
       msg: "SonarQube tests failed"
-      when: "output.stdout.find('SUCCESS') == -1"
+      when: output.stdout.find('SUCCESS') == -1 
