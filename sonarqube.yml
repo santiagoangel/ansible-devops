@@ -2,7 +2,7 @@
   hosts: all
   tasks:
     - name: sonarqube test
-      command: echo "SUCCESS"
+      command: echo "FAILED"
       register: output
     - name: test ok
       command: echo "SonarQube tests OK"
