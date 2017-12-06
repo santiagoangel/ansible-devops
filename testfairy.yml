@@ -1,0 +1,13 @@
+- name: testfairy
+  hosts: all
+  tasks:
+    - name: testfairy publish
+      command: echo "SUCCESS"
+      register: output
+    - name: check test
+      command: echo "Testfairy publish OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - name: check output
+      fail:
+        msg: "Testfairy publish failed"
+      when: output.stdout.find('SUCCESS') == -1 
