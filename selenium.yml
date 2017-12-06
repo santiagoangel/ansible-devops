@@ -1,0 +1,13 @@
+- name: selenium
+  hosts: all
+  tasks:
+    - name: selenium test
+      command: echo "SUCCESS"
+      register: output
+    - name: check test
+      command: echo "Selenium tests OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - name: check output
+      fail:
+        msg: "Selenium tests failed"
+      when: output.stdout.find('SUCCESS') == -1 
