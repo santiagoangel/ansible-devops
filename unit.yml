@@ -1,0 +1,13 @@
+- name: unit
+  hosts: all
+  tasks:
+    - name: unit test
+      command: echo "SUCCESS"
+      register: output
+    - name: check test
+      command: echo "Unit tests OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - name: check output
+      fail:
+        msg: "Unit tests failed"
+      when: output.stdout.find('SUCCESS') == -1 
