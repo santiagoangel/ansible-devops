@@ -1,0 +1,13 @@
+- name: jenkins
+  hosts: all
+  tasks:
+    - name: jenkins job
+      command: echo "SUCCESS"
+      register: output
+    - name: check test
+      command: echo "Jenkins job OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - name: check output
+      fail:
+        msg: "Jenkins job failed"
+      when: output.stdout.find('SUCCESS') == -1 
