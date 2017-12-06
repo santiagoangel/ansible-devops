@@ -4,8 +4,10 @@
     - name: sonarqube test
       command: echo "SUCCESS"
       register: output
-    - command: echo "SonarQube tests OK"
+    - name: test ok
+      command: echo "SonarQube tests OK"
       when: output.stdout.find('SUCCESS') != -1  
-    - fail:
-      msg: "SonarQube tests failed"
+    - name: test failed
+      fail:
+        msg: "SonarQube tests failed"
       when: output.stdout.find('SUCCESS') == -1 
