@@ -1,0 +1,13 @@
+- name: appium
+  hosts: all
+  tasks:
+    - name: appium test
+      command: echo "SUCCESS"
+      register: output
+    - name: check test
+      command: echo "appium tests OK"
+      when: output.stdout.find('SUCCESS') != -1  
+    - name: check output
+      fail:
+        msg: "appium tests failed"
+      when: output.stdout.find('SUCCESS') == -1 
